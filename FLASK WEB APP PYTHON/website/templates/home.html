@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <h1 align="center">Notes</h1>
+    <ul class="list-group lis-group-flush" id="notes">
+        {% for note in user.notes %}
+            <li class="list-group-item">{{ note.data }}
+                <button type="button" class="close" onClick="deleteNote({{ note.id }})"> <!-- we will write a JS function called deleteNote that will take in the note.id as a parameter -->
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </li>
+        {% endfor %} 
+    </ul>
+    <form method= "POST" >
+        <textarea
+            class="form-control"
+            id="note"
+            name="note">
+        </textarea>
+        <br />
+        <div align = "center">
+            <button type="submit" class="btn btn-primary">Add Note</button>
+        </div>
+
+    
+    </form>
+{% endblock %}
